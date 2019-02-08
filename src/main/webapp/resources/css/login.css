@@ -1,0 +1,51 @@
+body {
+    background-image: url("../img/sand.jpg");
+}
+
+.center {
+    margin: auto;
+    width:300px;
+    padding-top:10%;
+}
+
+.name {
+    border-bottom: 2px solid lightgrey;
+    background-image: url("../img/userLogo.png");
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: 5%;
+    background-position: 90% 50%;
+}
+
+.pass {
+    margin-bottom: 20px;
+    background-image: url("../img/passLogo.png");
+    background-repeat: no-repeat;
+    background-color: white;
+    background-size: 5%;
+    background-position: 90% 50%;
+}
+
+.form {
+    width: 250px;
+    margin: 40px auto 0;
+}
+
+input {
+    width: 100%;
+    outline: none;
+    padding: 15px;
+}
+
+input[type=submit] {
+    background: black;
+    border: none;
+    color: white;
+    font-size: 20px;
+    width: 80%;
+    margin-left: 10%;
+}
+
+input[type=submit]:hover {
+    color: orangered;
+}

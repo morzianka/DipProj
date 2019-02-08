@@ -1,0 +1,38 @@
+.menu {
+
+}
+
+.logout {
+//margin-right: 10px;
+//margin-top: 4px;
+    background-image: url("../img/logout.png");
+    background-color: white;
+    width: 50px;
+    height: 50px;
+}
+
+a {
+    color: black;
+}
+
+.nav-pills .nav-link.active {
+    color: black;
+    background-color: #d36413;
+}
+
+#country, #native {
+    width: 300px;
+}
+
+.col-sm-6 {
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.btn-info {
+    background-color: #d36413;
+    border-color: black;
+    color: black;
+    margin-left: 70%;
+}
