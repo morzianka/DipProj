@@ -1,0 +1,28 @@
+#chatButton {
+    margin-left: 10%;
+    width: 100px;
+    background-color: #d36413;
+    border-color: black;
+    color: black;
+}
+
+#seeProfile {
+    margin-left: 20%;
+    background-color: #d36413;
+    border-color: black;
+    color: black;
+}
+
+#friendImage {
+    height: 150px;
+    width: 150px;
+}
+
+.card-body {
+    margin-top: -25%;
+    margin-left: 25%;
+}
+
+.card {
+    height: 200px;
+}
