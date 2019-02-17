@@ -26,7 +26,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
     public List<User> getFriends(String login) {
         return userDAO.getFriends(login);
+    }
+
+    @Override
+    @Transactional
+    public void addFriend(User user) {
+        userDAO.addFriend(user);
     }
 }

@@ -8,7 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.security.Principal;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
@@ -16,13 +19,20 @@ public class HomeController {
     private UserService userService;
 
     @GetMapping("/")
-    public String home(Model model) {
-        User user = userService.getUser("e");
+    public String home(Model model, Principal principal) {
+        String name = principal.getName(); //get logged in username
+        User user = userService.getUser(name);
+
         model.addAttribute("user", user);
+        Set<String> languages = Arrays.stream(Locale.getISOLanguages())
+                .map(Locale::new)
+                .map(Locale::getDisplayLanguage)
+                .collect(Collectors.toCollection(TreeSet::new));
+        model.addAttribute("languages", languages);
         return "home";
     }
 
-    @PostMapping("/")
+    @PostMapping("/saveUser")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
         return "redirect:/";

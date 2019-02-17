@@ -1,10 +1,14 @@
+.body {
+    background-color: moccasin;
+}
+
 .menu {
 
 }
 
 .logout {
-//margin-right: 10px;
-//margin-top: 4px;
+    margin-right: 10px;
+    margin-top: 4px;
     background-image: url("../img/logout.png");
     background-color: white;
     width: 50px;
@@ -20,7 +24,7 @@ a {
     background-color: #d36413;
 }
 
-#country, #native, #native2 {
+.language {
     width: 300px;
 }
 
@@ -35,4 +39,8 @@ a {
     border-color: black;
     color: black;
     margin-left: 70%;
+}
+
+#helloUser {
+    font-style: italic;
 }

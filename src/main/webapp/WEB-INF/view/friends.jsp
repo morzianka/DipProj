@@ -3,8 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>BroBro</title>
+    <title>Friends</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/friends.css" rel="stylesheet">
@@ -15,8 +14,8 @@
 
 <div class="menu">
 <nav class="nav nav-pills nav-justified">
-    <a class="nav-item nav-link active" href="/">Home</a>
-    <a class="nav-item nav-link" href="/friends">Friends</a>
+    <a class="nav-item nav-link" href="/">Home</a>
+    <a class="nav-item nav-link active" href="/friends">Friends</a>
     <a class="nav-item nav-link" href="/about">About</a>
   <form:form action="${pageContext.request.contextPath}/logout" method="POST">
     <input class="logout" type="submit" value=""/>
@@ -31,7 +30,7 @@
       <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
       <br>
       <a href="#" id="seeProfile" class="btn btn-primary">See Profile</a>
-      <a href="#" id="chatButton" class="btn btn-primary">Chat</a>
+      <a href="/chat" id="chatButton" class="btn btn-primary">Chat</a>
     </div>
   </div>
   <br>

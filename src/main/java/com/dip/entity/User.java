@@ -1,7 +1,5 @@
 package com.dip.entity;
 
-import com.neovisionaries.i18n.CountryCode;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,19 +19,19 @@ public class User {
     @Column(name = "gender")
     private boolean gender;
     @Column(name = "native_language")
-    private CountryCode nativeLanguage;
+    private String nativeLanguage;
     @Column(name = "language_to_learn")
-    private CountryCode languageToLearn;
+    private String languageToLearn;
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
             CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @JoinTable(name = "user_friend",
-            joinColumns = @JoinColumn(name = "friend_login"),
-            inverseJoinColumns = @JoinColumn(name = "user_login"))
+            joinColumns = @JoinColumn(name = "friend"),
+            inverseJoinColumns = @JoinColumn(name = "usr"))
     private List<User> friends;
 
     public User() {}
 
-    public User(String name, int age, boolean gender, CountryCode nativeLanguage, CountryCode languageToLearn) {
+    public User(String name, int age, boolean gender, String nativeLanguage, String languageToLearn) {
         this.name = name;
         this.age = age;
         this.gender = gender;
@@ -73,19 +71,19 @@ public class User {
         this.age = age;
     }
 
-    public CountryCode getNativeLanguage() {
+    public String getNativeLanguage() {
         return nativeLanguage;
     }
 
-    public void setNativeLanguage(CountryCode nativeLanguage) {
+    public void setNativeLanguage(String nativeLanguage) {
         this.nativeLanguage = nativeLanguage;
     }
 
-    public CountryCode getLanguageToLearn() {
+    public String getLanguageToLearn() {
         return languageToLearn;
     }
 
-    public void setLanguageToLearn(CountryCode languageToLearn) {
+    public void setLanguageToLearn(String languageToLearn) {
         this.languageToLearn = languageToLearn;
     }
 
@@ -97,7 +95,7 @@ public class User {
         this.friends = friends;
     }
 
-    public boolean isGender() {
+    public boolean getGender() {
         return gender;
     }
 
