@@ -17,7 +17,7 @@ public class User {
     @Column(name = "age")
     private int age;
     @Column(name = "gender")
-    private boolean gender;
+    private boolean gender; // todo is female true or false?
     @Column(name = "native_language")
     private String nativeLanguage;
     @Column(name = "language_to_learn")
@@ -118,5 +118,33 @@ public class User {
                 ", nativeLanguage=" + nativeLanguage +
                 ", languageToLearn=" + languageToLearn +
                 '}';
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (age != user.age) return false;
+        if (gender != user.gender) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (nativeLanguage != null ? !nativeLanguage.equals(user.nativeLanguage) : user.nativeLanguage != null)
+            return false;
+        return languageToLearn != null ? languageToLearn.equals(user.languageToLearn) : user.languageToLearn == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = login != null ? login.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + age;
+        result = 31 * result + (gender ? 1 : 0);
+        result = 31 * result + (nativeLanguage != null ? nativeLanguage.hashCode() : 0);
+        result = 31 * result + (languageToLearn != null ? languageToLearn.hashCode() : 0);
+        return result;
     }
 }

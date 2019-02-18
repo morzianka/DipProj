@@ -1,7 +1,6 @@
 package com.dip.service;
 
 import com.dip.entity.User;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
