@@ -24,7 +24,7 @@
     <bean id="myDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
         <property name="driverClass" value="org.sqlite.JDBC"/>
-        <property name="jdbcUrl" value="jdbc:sqlite:/home/roman/work/DipRep/hb_student_tracker_test.db"/>
+        <property name="jdbcUrl" value="jdbc:sqlite:hb_student_tracker_test.db"/>
 
 
         <!-- these are connection pool properties for C3P0 -->
