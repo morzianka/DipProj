@@ -1,7 +1,10 @@
 package com.dip.entity;
 
+import javafx.print.Collation;
+
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -17,17 +20,29 @@ public class User {
     @Column(name = "age")
     private int age;
     @Column(name = "gender")
-    private boolean gender;
+    private boolean gender; // todo is female true or false?
     @Column(name = "native_language")
     private String nativeLanguage;
     @Column(name = "language_to_learn")
     private String languageToLearn;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH,
-            CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinTable(name = "user_friend",
-            joinColumns = @JoinColumn(name = "friend"),
-            inverseJoinColumns = @JoinColumn(name = "usr"))
-    private List<User> friends;
+
+
+    /**
+     * see https://stackoverflow.com/questions/1656113/hibernate-recursive-many-to-many-association-with-the-same-entity
+     */
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="user_friend",
+            joinColumns=@JoinColumn(name="friend"),
+            inverseJoinColumns=@JoinColumn(name="usr")
+    )
+    private Collection<User> friends;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="user_friend",
+            joinColumns=@JoinColumn(name="usr"),
+            inverseJoinColumns=@JoinColumn(name="friend")
+    )
+    private Collection<User> friendOf;
 
     public User() {}
 
@@ -87,11 +102,11 @@ public class User {
         this.languageToLearn = languageToLearn;
     }
 
-    public List<User> getFriends() {
+    public Collection<User> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<User> friends) {
+    public void setFriends(Collection<User> friends) {
         this.friends = friends;
     }
 
@@ -109,14 +124,55 @@ public class User {
         friends.add(friend);
     }
 
+    public Collection<User> getFriendOf() {
+        return friendOf;
+    }
+
+    public void setFriendOf(Collection<User> friendOf) {
+        this.friendOf = friendOf;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "name='" + name + '\'' +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
                 ", age=" + age +
-                ", sex=" + gender +
-                ", nativeLanguage=" + nativeLanguage +
-                ", languageToLearn=" + languageToLearn +
+                ", gender=" + gender +
+                ", nativeLanguage='" + nativeLanguage + '\'' +
+                ", languageToLearn='" + languageToLearn + '\'' +
+                ", friends=" + friends +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (age != user.age) return false;
+        if (gender != user.gender) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (name != null ? !name.equals(user.name) : user.name != null) return false;
+        if (nativeLanguage != null ? !nativeLanguage.equals(user.nativeLanguage) : user.nativeLanguage != null)
+            return false;
+        if (languageToLearn != null ? !languageToLearn.equals(user.languageToLearn) : user.languageToLearn != null)
+            return false;
+        return friends != null ? friends.equals(user.friends) : user.friends == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = login != null ? login.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + age;
+        result = 31 * result + (gender ? 1 : 0);
+        result = 31 * result + (nativeLanguage != null ? nativeLanguage.hashCode() : 0);
+        result = 31 * result + (languageToLearn != null ? languageToLearn.hashCode() : 0);
+        result = 31 * result + (friends != null ? friends.hashCode() : 0);
+        return result;
     }
 }
