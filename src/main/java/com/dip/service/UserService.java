@@ -2,7 +2,7 @@ package com.dip.service;
 
 import com.dip.entity.User;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface UserService {
 
@@ -10,7 +10,9 @@ public interface UserService {
 
     User getUser(String login);
 
-    List<User> getFriends(String login);
+    Collection<User> getFriends(User user);
 
-    void addFriend(User user);
+    void addFriend(User user, String friendLogin);
+
+    Collection<User> getSimilarUsers(String languageToLearn);
 }

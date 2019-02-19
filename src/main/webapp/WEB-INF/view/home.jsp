@@ -32,11 +32,11 @@
         <p>Name: ${user.name}</p>
         <p class="title">CEO & Founder, Example</p>
         <p>Age: ${user.age}</p>
-        <p id="gender">
+        <p id="Gender">
             <script>
-                var gender;
-                if (!${user.gender}) gender = "женский"; else gender = "мужской";
-                document.getElementById("gender").innerText = "Gender: " + gender;
+                var female;
+                if (!${user.female}) female = "мужской"; else female = "женский";
+                document.getElementById("Gender").innerText = "Gender: " + female;
             </script>
         </p>
         <p>Native language: ${user.nativeLanguage}</p>
@@ -78,7 +78,7 @@
                                 <td><label>male</label>
                                     <checkbox></checkbox>
                                 </td>
-                                <td><label>female</label><form:checkbox path="gender"/></td>
+                                <td><label>female</label><form:checkbox path="female"/></td>
                             </tr>
                             <tr>
                                 <td><label class="language">Language you want to learn:</label></td>
@@ -97,7 +97,7 @@
                                 </td>
                             </tr>
                             <form:hidden path="password"/>
-                            <%--<form:hidden path="friends"/>--%>
+                            <form:hidden path="friends"/>
                             </tbody>
                         </table>
                         <tr>

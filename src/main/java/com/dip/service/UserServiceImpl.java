@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Collection;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -27,13 +27,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public List<User> getFriends(String login) {
-        return userDAO.getFriends(login);
+    public Collection<User> getFriends(User user)  {
+        return userDAO.getFriends(user);
     }
 
     @Override
     @Transactional
-    public void addFriend(User user) {
-        userDAO.addFriend(user);
+    public void addFriend(User user, String friendLogin) {
+        userDAO.addFriend(user, friendLogin);
+    }
+
+    @Override
+    @Transactional
+    public Collection<User> getSimilarUsers(String languageToLearn) {
+        return userDAO.getSimilarUsers(languageToLearn);
     }
 }

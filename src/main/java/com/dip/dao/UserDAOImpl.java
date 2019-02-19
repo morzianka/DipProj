@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 import javax.transaction.Transactional;
-import java.util.List;
+import java.util.Collection;
 
 @Repository
 @Transactional
@@ -38,16 +38,24 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public List<User> getFriends(String login) {
+    public Collection<User> getFriends(User user) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createSQLQuery("select login from user join user_friend on (user.login=user_friend.login) where usr like :login");
-        query.setParameter("login", login);
-        query.executeUpdate();
-        return query.getResultList();
+        return session.get(User.class, user.getLogin()).getFriends();
     }
 
     @Override
-    public void addFriend(User user) {
+    public void addFriend(User user, String friendLogin) {
         Session session = sessionFactory.getCurrentSession();
+        user.add(session.get(User.class, friendLogin));
+        session.saveOrUpdate(user);
+    }
+
+    @Override
+    public Collection<User> getSimilarUsers(String languageToLearn) {
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createSQLQuery("select * from user where native_language like :languageToLearn");
+        query.setParameter("languageToLearn", languageToLearn);
+        query.executeUpdate();
+        return query.getResultList();
     }
 }

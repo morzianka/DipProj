@@ -1,11 +1,8 @@
 package com.dip.entity;
 
-import javafx.print.Collation;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Table(name = "user", schema = "web_chat")
@@ -20,25 +17,21 @@ public class User {
     @Column(name = "age")
     private int age;
     @Column(name = "gender")
-    private boolean gender; // todo is female true or false?
+    private boolean female;
     @Column(name = "native_language")
     private String nativeLanguage;
     @Column(name = "language_to_learn")
     private String languageToLearn;
 
-
-    /**
-     * see https://stackoverflow.com/questions/1656113/hibernate-recursive-many-to-many-association-with-the-same-entity
-     */
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="user_friend",
+    @JoinTable(name="user_friend", schema = "web_chat",
             joinColumns=@JoinColumn(name="friend"),
             inverseJoinColumns=@JoinColumn(name="usr")
     )
     private Collection<User> friends;
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="user_friend",
+    @JoinTable(name="user_friend", schema = "web_chat",
             joinColumns=@JoinColumn(name="usr"),
             inverseJoinColumns=@JoinColumn(name="friend")
     )
@@ -46,10 +39,10 @@ public class User {
 
     public User() {}
 
-    public User(String name, int age, boolean gender, String nativeLanguage, String languageToLearn) {
+    public User(String name, int age, boolean female, String nativeLanguage, String languageToLearn) {
         this.name = name;
         this.age = age;
-        this.gender = gender;
+        this.female = female;
         this.nativeLanguage = nativeLanguage;
         this.languageToLearn = languageToLearn;
     }
@@ -110,12 +103,12 @@ public class User {
         this.friends = friends;
     }
 
-    public boolean getGender() {
-        return gender;
+    public boolean isFemale() {
+        return female;
     }
 
-    public void setGender(boolean gender) {
-        this.gender = gender;
+    public void setFemale(boolean female) {
+        this.female = female;
     }
 
     public void add(User friend) {
@@ -139,7 +132,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", gender=" + gender +
+                ", female=" + female +
                 ", nativeLanguage='" + nativeLanguage + '\'' +
                 ", languageToLearn='" + languageToLearn + '\'' +
                 ", friends=" + friends +
@@ -154,7 +147,7 @@ public class User {
         User user = (User) o;
 
         if (age != user.age) return false;
-        if (gender != user.gender) return false;
+        if (female != user.female) return false;
         if (login != null ? !login.equals(user.login) : user.login != null) return false;
         if (name != null ? !name.equals(user.name) : user.name != null) return false;
         if (nativeLanguage != null ? !nativeLanguage.equals(user.nativeLanguage) : user.nativeLanguage != null)
@@ -169,7 +162,7 @@ public class User {
         int result = login != null ? login.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + age;
-        result = 31 * result + (gender ? 1 : 0);
+        result = 31 * result + (female ? 1 : 0);
         result = 31 * result + (nativeLanguage != null ? nativeLanguage.hashCode() : 0);
         result = 31 * result + (languageToLearn != null ? languageToLearn.hashCode() : 0);
         result = 31 * result + (friends != null ? friends.hashCode() : 0);

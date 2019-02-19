@@ -2,7 +2,6 @@ package com.dip.test;
 
 import com.dip.dao.UserDAO;
 import com.dip.entity.User;
-import com.dip.service.UserService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,8 +19,6 @@ import java.util.Collection;
 @ContextConfiguration(locations = "classpath:application-context-test.xml")
 @RunWith(SpringJUnit4ClassRunner.class)
 public class UserDAOImplTest {
-
-
     @Autowired
     private UserDAO userDAO;
 
@@ -45,7 +42,7 @@ public class UserDAOImplTest {
         Assert.assertEquals(25, user.getAge());
         Assert.assertEquals("RU", user.getNativeLanguage());
         Assert.assertEquals("Вася", user.getName());
-        Assert.assertTrue("Вася", user.getGender());
+        Assert.assertTrue("Вася", user.isFemale());
     }
 
 

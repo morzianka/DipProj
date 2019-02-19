@@ -2,7 +2,7 @@ package com.dip.dao;
 
 import com.dip.entity.User;
 
-import java.util.List;
+import java.util.Collection;
 
 public interface UserDAO {
 
@@ -10,7 +10,9 @@ public interface UserDAO {
 
     User getUser(String login);
 
-    List<User> getFriends(String login);
+    Collection<User> getFriends(User user);
 
-    void addFriend(User user);
+    void addFriend(User user, String friendLogin);
+
+    Collection<User> getSimilarUsers(String languageToLearn);
 }
