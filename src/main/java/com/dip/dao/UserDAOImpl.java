@@ -39,15 +39,7 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public Collection<User> getFriends(User user) {
-        Session session = sessionFactory.getCurrentSession();
-        return session.get(User.class, user.getLogin()).getFriends();
-    }
-
-    @Override
-    public void addFriend(User user, String friendLogin) {
-        Session session = sessionFactory.getCurrentSession();
-        user.add(session.get(User.class, friendLogin));
-        session.saveOrUpdate(user);
+        return user.getFriends();
     }
 
     @Override

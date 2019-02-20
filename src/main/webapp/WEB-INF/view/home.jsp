@@ -97,7 +97,6 @@
                                 </td>
                             </tr>
                             <form:hidden path="password"/>
-                            <form:hidden path="friends"/>
                             </tbody>
                         </table>
                         <tr>

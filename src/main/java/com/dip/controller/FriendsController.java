@@ -4,6 +4,7 @@ import com.dip.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +14,6 @@ public class FriendsController {
     public String friends(Model model, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         model.addAttribute("user", user);
-        System.out.println(user);
         return "friends";
     }
 

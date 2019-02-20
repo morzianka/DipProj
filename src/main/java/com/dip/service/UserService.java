@@ -12,7 +12,5 @@ public interface UserService {
 
     Collection<User> getFriends(User user);
 
-    void addFriend(User user, String friendLogin);
-
     Collection<User> getSimilarUsers(String languageToLearn);
 }

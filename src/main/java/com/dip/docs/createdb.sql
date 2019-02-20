@@ -7,8 +7,6 @@ CREATE TABLE web_chat.user
   gender            boolean     NULL,
   native_language   varchar(40) NULL,
   language_to_learn varchar(40) NULL,
-  friend            varchar(20) NULL,
-  foreign key ("friend") references web_chat.user ("login"),
   PRIMARY KEY (login)
 );
 

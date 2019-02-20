@@ -31,7 +31,6 @@ public class HomeController {
                 .collect(Collectors.toCollection(TreeSet::new));
         model.addAttribute("languages", languages);
         request.getSession().setAttribute("user", user);
-        System.out.println(user.getFriends().size());
         return "home";
     }
 

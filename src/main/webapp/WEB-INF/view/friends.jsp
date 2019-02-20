@@ -23,7 +23,7 @@
         </form:form>
     </nav>
 
-  <%--  <form:button action="addFriend">Find new friends!</form:button>--%>
+    <a id="getPossibleFriends" href="/possibleFriends">Find new friends!</a>
 
     <c:forEach items="${user.friends}" var="friend">
     <div class="col-sm-6">

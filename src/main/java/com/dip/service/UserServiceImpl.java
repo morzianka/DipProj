@@ -33,12 +33,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void addFriend(User user, String friendLogin) {
-        userDAO.addFriend(user, friendLogin);
-    }
-
-    @Override
-    @Transactional
     public Collection<User> getSimilarUsers(String languageToLearn) {
         return userDAO.getSimilarUsers(languageToLearn);
     }

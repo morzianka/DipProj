@@ -12,7 +12,5 @@ public interface UserDAO {
 
     Collection<User> getFriends(User user);
 
-    void addFriend(User user, String friendLogin);
-
     Collection<User> getSimilarUsers(String languageToLearn);
 }
