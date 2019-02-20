@@ -27,12 +27,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public Collection<User> getFriends(User user)  {
-        return userDAO.getFriends(user);
-    }
-
-    @Override
-    @Transactional
     public Collection<User> getSimilarUsers(String languageToLearn) {
         return userDAO.getSimilarUsers(languageToLearn);
     }

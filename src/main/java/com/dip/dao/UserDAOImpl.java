@@ -38,11 +38,6 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public Collection<User> getFriends(User user) {
-        return user.getFriends();
-    }
-
-    @Override
     public Collection<User> getSimilarUsers(String languageToLearn) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createSQLQuery("select * from user where native_language like :languageToLearn");

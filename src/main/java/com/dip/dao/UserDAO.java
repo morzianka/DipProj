@@ -10,7 +10,5 @@ public interface UserDAO {
 
     User getUser(String login);
 
-    Collection<User> getFriends(User user);
-
     Collection<User> getSimilarUsers(String languageToLearn);
 }
