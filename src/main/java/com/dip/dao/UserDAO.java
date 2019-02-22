@@ -8,7 +8,7 @@ public interface UserDAO {
 
     void saveUser(User user);
 
-    User getUser(String login);
+    User getUser(String username);
 
     Collection<User> getSimilarUsers(String languageToLearn);
 }

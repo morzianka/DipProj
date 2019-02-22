@@ -32,15 +32,15 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    public User getUser(String login) {
+    public User getUser(String username) {
         Session session = sessionFactory.getCurrentSession();
-        return session.get(User.class, login);
+        return session.get(User.class, username);
     }
 
     @Override
     public Collection<User> getSimilarUsers(String languageToLearn) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createSQLQuery("select * from user where native_language like :languageToLearn");
+        Query query = session.createSQLQuery("select * from web_chat.users where native_language like :languageToLearn");
         query.setParameter("languageToLearn", languageToLearn);
         query.executeUpdate();
         return query.getResultList();

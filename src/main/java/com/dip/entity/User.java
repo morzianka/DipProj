@@ -1,16 +1,22 @@
 package com.dip.entity;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 
 @Entity
-@Table(name = "user", schema = "web_chat")
+@Table(name = "users", schema = "web_chat")
 public class User {
     @Id
-    @Column(name = "login")
-    private String login;
+    @Column(name = "username")
+    @NotNull(message = "is required")
+    @Size(min = 4, message = "is required")
+    private String username;
     @Column(name = "password")
+    @NotNull(message = "is required")
+    @Size(min = 6, message = "is required")
     private String password;
     @Column(name = "name")
     private String name;
@@ -47,12 +53,12 @@ public class User {
         this.languageToLearn = languageToLearn;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -128,7 +134,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
                 ", age=" + age +
@@ -142,30 +148,36 @@ public class User {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof User)) return false;
 
         User user = (User) o;
 
-        if (age != user.age) return false;
-        if (female != user.female) return false;
-        if (login != null ? !login.equals(user.login) : user.login != null) return false;
-        if (name != null ? !name.equals(user.name) : user.name != null) return false;
-        if (nativeLanguage != null ? !nativeLanguage.equals(user.nativeLanguage) : user.nativeLanguage != null)
+        if (getAge() != user.getAge()) return false;
+        if (isFemale() != user.isFemale()) return false;
+        if (getUsername() != null ? !getUsername().equals(user.getUsername()) : user.getUsername() != null)
             return false;
-        if (languageToLearn != null ? !languageToLearn.equals(user.languageToLearn) : user.languageToLearn != null)
+        if (getPassword() != null ? !getPassword().equals(user.getPassword()) : user.getPassword() != null)
             return false;
-        return friends != null ? friends.equals(user.friends) : user.friends == null;
+        if (getName() != null ? !getName().equals(user.getName()) : user.getName() != null) return false;
+        if (getNativeLanguage() != null ? !getNativeLanguage().equals(user.getNativeLanguage()) : user.getNativeLanguage() != null)
+            return false;
+        if (getLanguageToLearn() != null ? !getLanguageToLearn().equals(user.getLanguageToLearn()) : user.getLanguageToLearn() != null)
+            return false;
+        if (getFriends() != null ? !getFriends().equals(user.getFriends()) : user.getFriends() != null) return false;
+        return getFriendOf() != null ? getFriendOf().equals(user.getFriendOf()) : user.getFriendOf() == null;
     }
 
     @Override
     public int hashCode() {
-        int result = login != null ? login.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + age;
-        result = 31 * result + (female ? 1 : 0);
-        result = 31 * result + (nativeLanguage != null ? nativeLanguage.hashCode() : 0);
-        result = 31 * result + (languageToLearn != null ? languageToLearn.hashCode() : 0);
-        result = 31 * result + (friends != null ? friends.hashCode() : 0);
+        int result = getUsername() != null ? getUsername().hashCode() : 0;
+        result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
+        result = 31 * result + (getName() != null ? getName().hashCode() : 0);
+        result = 31 * result + getAge();
+        result = 31 * result + (isFemale() ? 1 : 0);
+        result = 31 * result + (getNativeLanguage() != null ? getNativeLanguage().hashCode() : 0);
+        result = 31 * result + (getLanguageToLearn() != null ? getLanguageToLearn().hashCode() : 0);
+        result = 31 * result + (getFriends() != null ? getFriends().hashCode() : 0);
+        result = 31 * result + (getFriendOf() != null ? getFriendOf().hashCode() : 0);
         return result;
     }
 }

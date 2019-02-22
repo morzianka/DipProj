@@ -9,40 +9,8 @@
 </head>
 <body>
 
-<!-- Trigger the modal with a button -->
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Registration</button>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-
-            <div class="modal-body">
-
-                <form:form action="register" modelAttribute="user" method="POST">
-                    <table>
-                        <tbody>
-                        <tr>
-                            <td><label>Login: </label></td>
-                            <td><form:input path="login"/></td>
-                        </tr>
-                        <tr>
-                            <td><label>Password: </label></td>
-                            <td><form:input path="password"/></td>
-                        </tr>
-
-                        </tbody>
-                    </table>
-                    <tr>
-                        <td><label></label></td>
-                        <td><input class="btn btn-info btn-lg" type="submit" value="Save"/></td>
-                    </tr>
-                </form:form>
-            </div>
-        </div>
-    </div>
+<div>
+    <a href="${pageContext.request.contextPath}/register" class="btn btn-primary" role="button" aria-pressed="true">Registration</a>
 </div>
 
 <div class="center">

@@ -8,7 +8,7 @@ public interface UserService {
 
     void saveUser(User user);
 
-    User getUser(String login);
+    User getUser(String username);
 
     Collection<User> getSimilarUsers(String languageToLearn);
 }

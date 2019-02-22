@@ -30,7 +30,7 @@
         <div class="card">
             <img id="friendImage" class="card-img-top" src="img/logo.png" alt="Card image">
             < class="card-body">
-                <h4 class="card-title">${similarUser.login}</h4>
+                <h4 class="card-title">${similarUser.username}</h4>
                 <p class="card-text">Your friend native language is ${similarUser.nativeLanguage}</p>
                 <p class="card-text">${similarUser.name} wants to learn ${similarUser.languageToLearn}</p>
                 <br>

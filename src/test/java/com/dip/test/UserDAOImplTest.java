@@ -27,14 +27,8 @@ public class UserDAOImplTest {
         User user1 = new User("Вася", 25, true, "RU", "EN");
         User user2 = new User("Маша", 30, false, "DE", "IT");
 
-
-        /*
-            todo - autoincrement (autogenerate?) on server side?
-            Usually scripts to create database stores in project (or, use Hibirnate to create tables).
-            I used Hibernate to create tables and my 'login' is not autoincrement
-         */
-        user1.setLogin(user1.getName());
-        user2.setLogin(user2.getName());
+        user1.setUsername(user1.getName());
+        user2.setUsername(user2.getName());
         userDAO.saveUser(user1);
         userDAO.saveUser(user2);
 
@@ -52,9 +46,9 @@ public class UserDAOImplTest {
         User user2 = new User("Маша", 30, false, "DE", "IT");
         User user3 = new User("Петя", 45, false, "CH", "FR");
 
-        user1.setLogin(user1.getName());
-        user2.setLogin(user2.getName());
-        user3.setLogin(user3.getName());
+        user1.setUsername(user1.getName());
+        user2.setUsername(user2.getName());
+        user3.setUsername(user3.getName());
 
         userDAO.saveUser(user1);
         userDAO.saveUser(user2);

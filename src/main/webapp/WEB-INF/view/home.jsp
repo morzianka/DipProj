@@ -25,7 +25,7 @@
 </div>
 
 <div class="col-sm-6" align="center" style="font-weight: bold">
-    <h2 id="helloUser">Hello, ${user.login}!</h2>
+    <h2 id="helloUser">Hello, ${user.username}!</h2>
     <br>
     <div class="card">
 
@@ -62,7 +62,7 @@
                 <div class="modal-body">
 
                     <form:form action="saveUser" modelAttribute="user" method="POST">
-                        <form:hidden path="login"/>
+                        <form:hidden path="username"/>
                         <table>
                             <tbody>
                             <tr>
