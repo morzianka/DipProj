@@ -4,20 +4,34 @@
          xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 						http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http auto-config="true" >
-        <intercept-url pattern="/" access="isAuthenticated() || isRememberMe()" />
-        <intercept-url pattern="/admin**" access="hasRole('ADMIN')" />
-        <form-login login-page="/login" login-processing-url="/authenticateTheUser"/>
-        <logout/>
+    <!-- enable use-expressions -->
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/" access="isAuthenticated() || isRememberMe()"/>
+        <form-login login-page="/login" login-processing-url="/authenticateTheUser"
+                username-parameter="username"
+                password-parameter="password"/>
+        <!-- enable csrf protection -->
+        <csrf/>
     </http>
 
-    <authentication-manager >
+    <!-- Select users from database -->
+    <authentication-manager>
+        <authentication-provider>
+            <jdbc-user-service data-source-ref="myDataSource"
+                               users-by-username-query=
+                                       "select username, password, '1' from web_chat.users where username=?"
+                               authorities-by-username-query=
+                                       "select username, 'ROLE_USER' from web_chat.users where username =?"/>
+        </authentication-provider>
+    </authentication-manager>
+
+   <!-- <authentication-manager >
         <authentication-provider>
             <user-service>
                 <user name="e"  password="{noop}e"  authorities="ROLE_USER" />
                 <user name="admin" password="{noop}admin" authorities="ROLE_ADMIN" />
             </user-service>
         </authentication-provider>
-    </authentication-manager>
+    </authentication-manager>-->
 
 </b:beans>
