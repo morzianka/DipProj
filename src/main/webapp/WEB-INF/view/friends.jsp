@@ -22,20 +22,21 @@
             <input class="logout" type="submit" value=""/>
         </form:form>
     </nav>
+</div>
 
-    <a id="getPossibleFriends" href="/possibleFriends">Find new friends!</a>
-
+    <a id="possibleFriends" href="/possibleFriends">Find new friends!</a>
+<br><br>
     <c:forEach items="${user.friends}" var="friend">
     <div class="col-sm-6">
         <div class="card">
-            <img id="friendImage" class="card-img-top" src="img/logo.png" alt="Card image">
+            <img id="friendImage" class="card-img-top" src="${pageContext.request.contextPath}/img/avatar.png" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">${friend.username}</h4>
                 <p class="card-text">Your friend native language is ${friend.nativeLanguage}</p>
                 <p class="card-text">${friend.name} wants to learn ${friend.languageToLearn}</p>
                 <br>
                 <a href="/friendProfile" id="seeProfile" class="btn btn-primary">See Profile</a>
-                <a href="/chat" id="chatButton" class="btn btn-primary">Chat</a>
+                <a href="/chat?user=${user.username}&friend=${friend.username}" id="chatButton" class="btn btn-primary">Chat</a>
             </div>
         </div>
         <br>

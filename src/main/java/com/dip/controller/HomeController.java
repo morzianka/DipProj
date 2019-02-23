@@ -35,7 +35,11 @@ public class HomeController {
     }
 
     @PostMapping("/saveUser")
-    public String saveUser(@ModelAttribute("user") User user) {
+    public String saveUser(@ModelAttribute("user") User user, HttpServletRequest request) {
+        User userWithPreviousFilledFields = (User) request.getSession().getAttribute("user");
+        user.setPassword(userWithPreviousFilledFields.getPassword());
+        user.setFriends(userWithPreviousFilledFields.getFriends());
+        user.setFriendOf(userWithPreviousFilledFields.getFriendOf());
         userService.saveUser(user);
         return "redirect:/";
     }

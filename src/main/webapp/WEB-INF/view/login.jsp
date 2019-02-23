@@ -10,7 +10,7 @@
 <body>
 
 <div>
-    <a href="${pageContext.request.contextPath}/register" class="btn btn-primary" role="button" aria-pressed="true">Registration</a>
+    <a href="${pageContext.request.contextPath}/register" id="reg" role="button" aria-pressed="true">Registration</a>
 </div>
 
 <div class="center">

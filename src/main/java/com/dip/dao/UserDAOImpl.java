@@ -7,7 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Query;
+import org.hibernate.query.NativeQuery;
 import javax.transaction.Transactional;
 import java.util.Collection;
 
@@ -40,9 +40,8 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public Collection<User> getSimilarUsers(String languageToLearn) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createSQLQuery("select * from web_chat.users where native_language like :languageToLearn");
+        NativeQuery<User> query = session.createNativeQuery("select * from web_chat.users where native_language like :languageToLearn", User.class);
         query.setParameter("languageToLearn", languageToLearn);
-        query.executeUpdate();
         return query.getResultList();
     }
 }

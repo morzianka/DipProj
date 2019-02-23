@@ -8,9 +8,9 @@
     <title>Registration Form</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/registration.css" rel="stylesheet">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link type="text/css" href="${pageContext.request.contextPath}/resources/css/registration.css" rel="stylesheet">
     <style>
         .error {
             color: red
@@ -24,7 +24,7 @@
     <div id="loginbox" class="mainbox col-md-3 col-md-offset-2 col-sm-6 col-sm-offset-2">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <div class="panel-title">Register New User</div>
+                <div class="panel-title">Registration</div>
             </div>
             <div style="padding-top: 30px" class="panel-body">
 
@@ -48,14 +48,14 @@
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <form:errors path="username" cssClass="error"/>
-                        <form:input path="username" placeholder="username (*)" class="form-control"/>
+                        <form:input path="username" placeholder="username" class="form-control"/>
                     </div>
 
                     <!-- Password -->
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                         <form:errors path="password" cssClass="error"/>
-                        <form:password path="password" placeholder="password (*)" class="form-control"/>
+                        <form:password path="password" placeholder="password" class="form-control"/>
                     </div>
 
                     <div style="margin-top: 10px" class="form-group">

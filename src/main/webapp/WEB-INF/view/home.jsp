@@ -30,12 +30,11 @@
     <div class="card">
 
         <p>Name: ${user.name}</p>
-        <p class="title">CEO & Founder, Example</p>
         <p>Age: ${user.age}</p>
         <p id="Gender">
             <script>
                 var female;
-                if (!${user.female}) female = "мужской"; else female = "женский";
+                if (!${user.female}) female = "male"; else female = "female";
                 document.getElementById("Gender").innerText = "Gender: " + female;
             </script>
         </p>
@@ -74,16 +73,16 @@
                                 <td><form:input path="age"/></td>
                             </tr>
                             <tr>
-                                <td><label>Gender: </label></td>
-                                <td><label>male</label>
-                                    <checkbox></checkbox>
+                                <td>Gender</td>
+                                <td>
+                                    <input type="radio" name="rd" value="false"> Male
+                                    <input type="radio" name="rd" value="true"> Female
                                 </td>
-                                <td><label>female</label><form:checkbox path="female"/></td>
                             </tr>
                             <tr>
                                 <td><label class="language">Language you want to learn:</label></td>
                                 <td>
-                                    <form:select path="languageToLearn">
+                                    <form:select id="lan" path="languageToLearn">
                                         <form:options items="${languages}"/>
                                     </form:select>
                                 </td>
@@ -91,12 +90,11 @@
                             <tr>
                                 <td><label class="language">Your native language:</label></td>
                                 <td>
-                                    <form:select path="nativeLanguage">
+                                    <form:select id="lan" path="nativeLanguage">
                                         <form:options items="${languages}"/>
                                     </form:select>
                                 </td>
                             </tr>
-                            <form:hidden path="password"/>
                             </tbody>
                         </table>
                         <tr>

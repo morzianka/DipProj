@@ -3,13 +3,15 @@ body {
 }
 
 #loginbox {
-	margin-top: 10%;
-	margin-left: 30%;
-	color: orangered;
+	margin-top: 12%;
+	margin-left: 37%;
 }
 
-.panel-heading .btn .btn-primary {
+.panel-primary>.panel-heading {
 	background-color: black;
 	border-color: black;
-	color: white;
+}
+
+.btn-primary {
+	background-color: black;
 }

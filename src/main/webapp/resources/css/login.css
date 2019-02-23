@@ -56,3 +56,9 @@ input[type=submit]:hover {
     color: white;
     margin-right: 70%;
 }
+
+#reg {
+    color: black;
+    font-size: large;
+    padding-left: 93%;
+}

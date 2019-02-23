@@ -47,7 +47,7 @@ public class LoginController {
         String password = user.getPassword();
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(password);
-        user.setPassword(hashedPassword);
+        user.setPassword("{bcrypt}" + hashedPassword);
         userService.saveUser(user);
         return "login";
     }

@@ -3,18 +3,20 @@ package com.dip.controller;
 import com.dip.entity.User;
 import com.dip.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Collection;
 
+@Controller
 public class AddFriendController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/getPossibleFriends")
-    public String getPossibleFriends(Model model, HttpServletRequest request) {
+    @GetMapping("/possibleFriends")
+    public String possibleFriends(Model model, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         Collection<User> similarUsers = userService.getSimilarUsers(user.getLanguageToLearn());
         model.addAttribute("similarUsers", similarUsers);
@@ -22,9 +24,10 @@ public class AddFriendController {
     }
 
     @PostMapping("/addFriend")
-    public String addFriend(HttpServletRequest request, @ModelAttribute("friend") User friend) {
+    public String addFriend(HttpServletRequest request, User similarUser) {
         User user = (User) request.getSession().getAttribute("user");
-        user.add(friend);
+        user.add(similarUser);
+        userService.saveUser(user);
         return "possibleFriends";
     }
 }

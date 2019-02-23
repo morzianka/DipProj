@@ -22,23 +22,25 @@
             <input class="logout" type="submit" value=""/>
         </form:form>
     </nav>
+</div>
 
-    <a id="getPossibleFriends" href="/getPossibleFriends">Find new friends!</a>
+<a id="possibleFriends" href="/possibleFriends">Find new friends!</a>
 
-    <c:forEach items="${similarUsers}" var="similarUser">
-    <input class="col-sm-6">
-        <div class="card">
-            <img id="friendImage" class="card-img-top" src="img/logo.png" alt="Card image">
-            < class="card-body">
-                <h4 class="card-title">${similarUser.username}</h4>
-                <p class="card-text">Your friend native language is ${similarUser.nativeLanguage}</p>
-                <p class="card-text">${similarUser.name} wants to learn ${similarUser.languageToLearn}</p>
-                <br>
+<c:forEach items="${similarUsers}" var="similarUser">
+<div class="col-sm-6">
+    <div class="card">
+        <img id="friendImage" class="card-img-top" src="${pageContext.request.contextPath}/img/avatar.png"
+             alt="Card image">
+        <div class="card-body">
             <form:form action="addFriend" modelAttribute="similarUser" method="POST">
+                <h4 class="card-title">${similarUser.username}</h4>
+                <p class="card-text">Native language: ${similarUser.nativeLanguage}</p>
+                <p class="card-text">${similarUser.username} wants to learn ${similarUser.languageToLearn}</p>
+                <br>
                 <input type="submit" value="Add" id="chatButton" class="btn btn-primary"/>
             </form:form>
-            </div>
         </div>
+    </div>
     </c:forEach>
 
     <!-- Подключаем jQuery -->

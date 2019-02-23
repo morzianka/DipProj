@@ -7,12 +7,10 @@
 }
 
 .logout {
-    margin-right: 10px;
-    margin-top: 4px;
     background-image: url("../img/logout.png");
     background-color: white;
-    width: 50px;
-    height: 50px;
+    width: 64px;
+    height: 64px;
 }
 
 a {
@@ -22,6 +20,7 @@ a {
 .nav-pills .nav-link.active {
     color: black;
     background-color: #d36413;
+    height: 66px;
 }
 
 .language {
@@ -43,4 +42,8 @@ a {
 
 #helloUser {
     font-style: italic;
+}
+
+#lan {
+    width: 176px;
 }
