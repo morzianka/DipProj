@@ -24,15 +24,12 @@
     </nav>
 </div>
 
-<a id="possibleFriends" href="/possibleFriends">Find new friends!</a>
-
 <c:forEach items="${similarUsers}" var="similarUser">
 <div class="col-sm-6">
     <div class="card">
-        <img id="friendImage" class="card-img-top" src="${pageContext.request.contextPath}/img/avatar.png"
-             alt="Card image">
+        <img id="friendImage" class="card-img-top" src="/resources/img/avatar.png" alt="Card image">
         <div class="card-body">
-            <form:form action="addFriend" modelAttribute="similarUser" method="POST">
+            <form:form action="addFriend?similarUser=${similarUser.username}" method="POST">
                 <h4 class="card-title">${similarUser.username}</h4>
                 <p class="card-text">Native language: ${similarUser.nativeLanguage}</p>
                 <p class="card-text">${similarUser.username} wants to learn ${similarUser.languageToLearn}</p>

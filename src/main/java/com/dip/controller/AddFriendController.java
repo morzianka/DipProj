@@ -19,14 +19,17 @@ public class AddFriendController {
     public String possibleFriends(Model model, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
         Collection<User> similarUsers = userService.getSimilarUsers(user.getLanguageToLearn());
+        similarUsers.remove(user);
+        similarUsers.removeAll(user.getFriends());
         model.addAttribute("similarUsers", similarUsers);
         return "possibleFriends";
     }
 
     @PostMapping("/addFriend")
-    public String addFriend(HttpServletRequest request, User similarUser) {
+    public String addFriend(@RequestParam("similarUser") String similarUser, HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute("user");
-        user.add(similarUser);
+        User friend = userService.getUser(similarUser);
+        user.add(friend);
         userService.saveUser(user);
         return "possibleFriends";
     }

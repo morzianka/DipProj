@@ -9,6 +9,7 @@
           integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/friends.css" rel="stylesheet">
     <link type="text/css" href="${pageContext.request.contextPath}/resources/css/home.css" rel="stylesheet">
+    <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/chat.js"></script>
 </head>
 
 <body>
@@ -16,8 +17,8 @@
 <div class="menu">
     <nav class="nav nav-pills nav-justified">
         <a class="nav-item nav-link" href="/">Home</a>
-        <a class="nav-item nav-link active" href="/friends">Friends</a>
-        <a class="nav-item nav-link" href="/about">About</a>
+        <a class="nav-item nav-link active" href="${pageContext.request.contextPath}/friends">Friends</a>
+        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/about">About</a>
         <form:form action="${pageContext.request.contextPath}/logout" method="POST">
             <input class="logout" type="submit" value=""/>
         </form:form>
@@ -29,17 +30,16 @@
     <c:forEach items="${user.friends}" var="friend">
     <div class="col-sm-6">
         <div class="card">
-            <img id="friendImage" class="card-img-top" src="${pageContext.request.contextPath}/img/avatar.png" alt="Card image">
+            <img id="friendImage" class="card-img-top" src="resources/img/avatar.png" alt="Card image">
             <div class="card-body">
                 <h4 class="card-title">${friend.username}</h4>
                 <p class="card-text">Your friend native language is ${friend.nativeLanguage}</p>
                 <p class="card-text">${friend.name} wants to learn ${friend.languageToLearn}</p>
                 <br>
                 <a href="/friendProfile" id="seeProfile" class="btn btn-primary">See Profile</a>
-                <a href="/chat?user=${user.username}&friend=${friend.username}" id="chatButton" class="btn btn-primary">Chat</a>
+                <a href="/chat" id="chatButton" class="btn btn-primary">Chat</a>
             </div>
         </div>
-        <br>
     </div>
     </c:forEach>
 

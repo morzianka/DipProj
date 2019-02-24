@@ -25,13 +25,4 @@
         </authentication-provider>
     </authentication-manager>
 
-   <!-- <authentication-manager >
-        <authentication-provider>
-            <user-service>
-                <user name="e"  password="{noop}e"  authorities="ROLE_USER" />
-                <user name="admin" password="{noop}admin" authorities="ROLE_ADMIN" />
-            </user-service>
-        </authentication-provider>
-    </authentication-manager>-->
-
 </b:beans>

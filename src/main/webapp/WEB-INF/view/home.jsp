@@ -33,9 +33,9 @@
         <p>Age: ${user.age}</p>
         <p id="Gender">
             <script>
-                var female;
-                if (!${user.female}) female = "male"; else female = "female";
-                document.getElementById("Gender").innerText = "Gender: " + female;
+                var gender;
+                if (!${user.female}) gender = "male"; else gender = "female";
+                document.getElementById("Gender").innerText = "Gender: " + gender;
             </script>
         </p>
         <p>Native language: ${user.nativeLanguage}</p>
@@ -73,7 +73,7 @@
                                 <td><form:input path="age"/></td>
                             </tr>
                             <tr>
-                                <td>Gender</td>
+                                <td><label>Gender</label></td>
                                 <td>
                                     <input type="radio" name="rd" value="false"> Male
                                     <input type="radio" name="rd" value="true"> Female
@@ -97,16 +97,10 @@
                             </tr>
                             </tbody>
                         </table>
-                        <tr>
-                            <td><label></label></td>
-                            <td><input class="save" type="submit" value="Save"/></td>
-                        </tr>
-                    </form:form>
-
-
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <td><input class="btn btn-default" type="submit" value="Save"/></td>
                     </div>
+                    </form:form>
                 </div>
             </div>
         </div>

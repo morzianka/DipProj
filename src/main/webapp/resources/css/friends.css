@@ -14,13 +14,12 @@
 }
 
 #friendImage {
-    height: 150px;
-    width: 150px;
-    background-image: url("../img/avatar.png");
+    height: 130px;
+    width: 130px;
 }
 
 .card-body {
-    margin-top: -25%;
+    margin-top: -21%;
     margin-left: 25%;
 }
 
@@ -29,7 +28,7 @@
 }
 
 #possibleFriends {
-    margin-left: 10%;
+    margin-left: 7%;
     margin-top: 10%;
     font-size: large;
 }
